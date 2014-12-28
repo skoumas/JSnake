@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>JSnake - a JQuery HTML5Canvas Plugin</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="media/style.css">
+        <link rel="stylesheet" href="media/prism.css">
+        <link href="media/favicon.png" rel="shortcut icon" type="image/x-icon">
+        <script src="media/prism.js"></script>
+    </head>
+    
+    <body>
+        <div id="screenhover"></div>
+        <div class="container" name="top"></div>
+        <div class="header">
+            <div id="phone"></div>
+            <div id="screenContainer">
+                <div id="screenScore">0</div>
+                <div id="screenLine"></div>
+                <div id="screen"></div>
+                <div id="screenback"></div>
+            </div>
+        </div>
+        </div>
+        <div class="container" style="margin-top:50px;">
+            <div class="row">
+                <div class="col-sm-4">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li role="presentation" class="active"><a href="#">Home</a>
+
+                        </li>
+                        <li role="presentation"><a href="#examples">Examples</a>
+
+                        </li>
+                        <li role="presentation"><a href="#download">Download</a>
+
+                        </li>
+                        <li role="presentation"><a href="#customization">Customization</a>
+
+                        </li>
+                        <li role="presentation"><a href="#donate">Donate</a>
+
+                        </li>
+                        <li role="presentation"><a href="#about">About</a>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                     <h1 style="margin:0;padding:0;"><img src="media/favicon.png"/> JSnake </h1>
+
+                     <h4> Fully Customizable Snake Plugin for JQuery</h4>
+
+                    <p>A fully customizable JQuery plugin that implements a snake game. You can use it in loading screens, like a small nice widget for a website or develop your own snake game.</p>
+                     <h2 class="install">Express Install</h2>
+To start implementing your JSnake object right away just add this JavaScript file into your main header. <pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Your Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  
+    &lt;script src=&quot;http://code.jquery.com/jquery-1.11.2.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;js/jsnake.js&quot;&gt;&lt;/script&gt;
+    &lt;div id=&quot;snake1&quot;&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+        $(&quot;#snake&quot;).JSnake();
+    &lt;/script&gt;
+  
+  &lt;/body&gt;
+&lt;/html&gt;  </code></pre> 
+                    <p>Setting up a new JSnake instance is super easy. Just add the JSnake command after the JQuery selector of the object or objects you want to create the new snake game.</p>
+                    <p>The ideal tag to create a new JSnake instance is the div tag. The script will then create a canvas object inside your div</p>
+<pre><code class="language-javascript">$("#screen").JSnake();</code></pre>
+
+                    <div class="pull-right"><a href="#top">Back to Top</a>
+                    </div>
+                     <h2 name="download">Download</h2>
+
+                    <button class="btn btn-success"><i class="fa fa-cloud-download"></i> Download Source</button>
+                    <button class="btn btn-success"><i class="fa fa-github"></i> GitHub</button>
+                     <h2 name="examples">Examples</h2>
+
+                    <div class="row" style="margin-top:20px; margin-bottom:20px;">
+                        <div class="col-sm-6">
+                            <div id="snake1"></div>
+<pre><code class="language-javascript">darkncool = ({
+back: "#294052",snake: "#8fbcdb",
+food: "#f4d6bc",text: "#ffffff",
+wall: "#6f6005"
+});
+
+$("#snake1").JSnake({
+walls: true,showWalls: true,
+resolution: 30,showScore: true,
+showStart: true,colors: darkncool,
+snakeLength: 10,width: 250
+,height: 200,glow: true
+});</code></pre> 
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="snake2"></div> <pre><code class="language-javascript">darkncool = ({
+back: "#294052",snake: "#8fbcdb",
+food: "#f4d6bc",text: "#ffffff",
+wall: "#6f6005"
+});
+
+$("#snake2").JSnake({
+walls: true,showWalls: true,
+resolution: 30,showScore: true,
+showStart: true,wallWidth:5,
+colors: orangy,snakeLength: 10,
+width: 270,height: 200,
+glow: 8
+});</code></pre>
+
+                        </div>
+                    </div>
+                    <div class="pull-right"><a href="#top">Back to Top</a>
+                    </div>
+                     <h2 name="customization">Customization</h2>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Setting</th>
+                            <th>Description</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                        </tr>
+                        <tr>
+                            <td>width</td>
+                            <td>The width of your JSnake instance in pixels</td>
+                            <td>Integer</td>
+                            <td>450</td>
+                        </tr>
+                        <tr>
+                            <td>height</td>
+                            <td>The height of your JSnake instance in pixels</td>
+                            <td>Integer</td>
+                            <td>450</td>
+                        </tr>
+                        <tr>
+                            <td>sound</td>
+                            <td>Enable this if you want sound in your snake</td>
+                            <td>Boolean</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td>glow</td>
+                            <td>Renders the screen with a glowing effect simulating an arcade screen.</td>
+                            <td>Integer</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td>direction</td>
+                            <td>The direction which the snake moves. Controlled by the keyboard's arrow keys</td>
+                            <td>String ENum "right","left","up","down"</td>
+                            <td>Right</td>
+                        </tr>
+                        <tr>
+                            <td>gameSpeed</td>
+                            <td>The speed of the game expressed in milliseconds. The main game loop runs with this value</td>
+                            <td>Integer</td>
+                            <td>Right</td>
+                        </tr>
+                        <tr>
+                            <td>snakeLength</td>
+                            <td>The length that the snake has when starting the game.</td>
+                            <td>Integer</td>
+                            <td>Right</td>
+                        </tr>
+                        <tr>
+                            <td>startingScore</td>
+                            <td>A starting point for the score</td>
+                            <td>Integer</td>
+                            <td>Right</td>
+                        </tr>
+                        <tr>
+                            <td>resolution</td>
+                            <td>The resolution of the game expressed as Width/Resolution. The more the detail and space for the snake to move the higher the value.</td>
+                            <td>Integer</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>showScore</td>
+                            <td>Shows the current player's score if enabled</td>
+                            <td>Boolean</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td>walls</td>
+                            <td>Game over when the snake head meets the end of the screen</td>
+                            <td>Boolean</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td>eatSelf</td>
+                            <td>Game over when the snake head meets it's body</td>
+                            <td>Boolean</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td>showStart</td>
+                            <td>Shows up a starting screen at the beginning</td>
+                            <td>Boolean</td>
+                            <td>True</td>
+                        </tr>
+                    
+                        <tr>
+                            <td>startPosition</td>
+                            <td>The starting position of the snake at the start of the game</td>
+                            <td>Array {x,y}</td>
+                            <td>{x:0,y:0}</td>
+                        </tr>
+                        <tr>
+                            <td>Colors</td>
+                            <td>Customizing the game's colors.</td>
+                            <td>Array</td>
+                            <td>See Bellow</td>
+                        </tr>
+                    </table>
+                     <h3 name="customizing_colors" style="margin-top:70px">Custom Colours </h3>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Colour Name</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                        <tr>
+                            <td>back</td>
+                            <td>The colour of the screen</td>
+                            <td>#ffffff</td>
+                        </tr>
+                        <tr>
+                            <td>snake</td>
+                            <td>The colour of the snake</td>
+                            <td>#000000</td>
+                        </tr>
+                        <tr>
+                            <td>food</td>
+                            <td>The colour of the food</td>
+                            <td>#000000</td>
+                        </tr>
+                        <tr>
+                            <td>text</td>
+                            <td>The colour of the screen</td>
+                            <td>#000000</td>
+                        </tr>
+                        <tr>
+                            <td>wall</td>
+                            <td>The color that the borders will have</td>
+                            <td>#000000</td>
+                        </tr>
+                    </table>
+
+
+
+                     <h3 name="externalcontrol" style="margin-top:70px">Events</h3>
+
+                     <p>You can apply your own function when a specific event takes place in JSnake such as when the game starts or when the snake hits the wall</p>
+                    
+
+ 
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Event</th>
+                            <th>Description</th>
+                            <td>Returns</td>
+                        </tr>
+                        <tr>
+                            <td>onStartScreen</td>
+                            <td>When the starting screen load.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>onStart</td>
+                            <td>When the game starts.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>onLoop</td>
+                            <td>Called at each game circle.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>onPause</td>
+                            <td>When the gameplay pauses.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>onEatSelf</td>
+                            <td>When the snake eat it self.</td>
+                            <td>(score,gameovers)</td>
+                        </tr>
+                        <tr>
+                            <td>onHitWall</td>
+                            <td>When the snake hits the wall.</td>
+                            <td>(score,gameovers)</td>
+                        </tr>
+                        <tr>
+                            <td>onGameOver</td>
+                            <td>When the game is over. You can use this function to combine the onEatSelf and onHitWall events.</td> 
+                            <td>(score,gameovers)</td> 
+                        </tr>
+                        
+                    </table>
+
+
+
+                     <h3 name="externalcontrol" style="margin-top:70px"> Functions</h3>
+
+                    <p>You can control your JSnake instance by a set of external functions. The functions are listed below.</p>
+                    <p>To use those function simply call the function name after the created JSnake instance as shown below</p>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Function</th>
+                            <th>Description</th>
+                            <th>Arguments</th>
+                        </tr>
+                        <tr>
+                            <td>setDirection</td>
+                            <td>Sets the direction of the snake</td>
+                            <td>Direction("right","left","up","down")</td>
+                        </tr>
+                        <tr>
+                            <td>setScore</td>
+                            <td>Changes the current score</td>
+                            <td>Integer</td>
+                        </tr>
+                        <tr>
+                            <td>beep</td>
+                            <td>Generates a beeping sound</td>
+                            <td>null</td>
+                        </tr>
+                        <tr>
+                            <td>togglePause</td>
+                            <td>Pauses and un-pauses gameplay</td>
+                            <td>null</td>
+                        </tr>
+                       
+                    </table>
+
+
+
+                    <div style="margin-top:70px;" class="row">
+                        <div class="col-sm-6">
+                            <div id="snake_external"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button id="scoreButton" class="btn btn-default">Get the Score</button>
+                            <button id="togglePauseButton" class="btn btn-default">Toggle Pause</button>
+                            <button id="beepButton" class="btn btn-default">Beep</button>
+                        </div>
+                    </div>
+<pre><code class="language-javascript">var snake=$("#yourdiv").JSnake();
+
+$("#beepButton").click(function(e){     
+    snake.beep();
+});
+
+$("#scoreButton").click(function(e){    
+    alert( "The score is : " + snake.getScore());
+});
+
+$("#togglePauseButton").click(function(e){
+    snake.togglePause();
+});</code></pre> 
+                    <div class="pull-right"><a href="#top">Back to Top</a>
+                    </div>
+                     <h2 name="donate">Donate</h2>
+                  
+
+If you found this plugin useful or the work please donate.
+                    
+   <div class="well" align="center">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_donations">
+                        <input type="hidden" name="business" value="skoumas.net@gmail.com">
+                        <input type="hidden" name="lc" value="GB">
+                        <input type="hidden" name="no_note" value="0">
+                        <input type="hidden" name="currency_code" value="EUR">
+                        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+                    <div class="pull-right"><a href="#top">Back to Top</a>
+                    </div>
+                     <h2 name="about">About</h2>
+
+                    <p>This plugin is created by George Papanikolaou, also known as "skoumas". To learn more about me visit www.skoumas.com</p>
+                    <p></p>
+                    <p></p>
+                     
+
+
+                    
+                        
+
+                </div>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="jsnake.js"></script>
+            <script src="script.js"></script>
+            <script>
+                (function(i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r;
+                    i[r] = i[r] || function() {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+                    a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                    a.async = 1;
+                    a.src = g;
+                    m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-57632645-1', 'auto');
+                ga('send', 'pageview');
+            </script>
+    </body>
+
+</html>
