@@ -391,18 +391,20 @@ function drawPixelatedBackground()
             ctx.shadowBlur=0;
         }
 
-        function beep(frequency) {
+        function beep(frequency)
+        {
             frequency = frequency != "" ? frequency : 440;
+            frequency = frequency != undefined ? frequency : 440;
             if (settings.sound) {
                 var osc = actx.createOscillator();
+                console.log(frequency);
+                if (!osc) return;
                 gain = actx.createGain();
                 gain.gain.value = 0.3;
-                osc.type = 0;
+                osc.type = 'sine';
                 osc.frequency.value = frequency;
                 osc.connect(gain);
                 gain.connect(actx.destination);
-
-
                 currentTime = actx.currentTime;
                 osc.start(currentTime);
                 osc.stop(currentTime + 0.1);
