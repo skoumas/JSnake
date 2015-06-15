@@ -32,7 +32,7 @@
     margin-right:auto;
     position:absolute;
     left:50%;
-    background-image:url("phoneheader.png");
+    background-image:url("PhoneHeader.png");
     top:0;
     z-index:5;
     margin-left:-375px;
@@ -43,7 +43,7 @@
     left:50%;
     margin-left:-240px;
     margin-top:50px;
-    background-image:url("screenhover.png");
+    background-image:url("screenHover.png");
     width:475px;
     height:340px;
     z-index: 4;

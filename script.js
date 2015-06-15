@@ -21,13 +21,14 @@ darkncool = ({
     text: "#ffffff",wall: "#6f6005"
 });
 
-function scored(score)
-{
-    $("#screenScore").html(score);
-}
 
 nokiasnake = $("#screen").JSnake({colors:nokia,pause:true,gameSpeed:100,resolution:30, wallWidth:3, width: 450,height: 290,onScore:"scored",renderPause:false,showStart:false});
- 
+ function scored(score)
+{
+    $("#screenScore").html(score);
+    console.log("A");
+}
+
 $("#snake1").JSnake({
     walls: true,
     resolution: 30,
